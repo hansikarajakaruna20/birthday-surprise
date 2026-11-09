@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7fbff" />
+  <title>Happy Birthday, My Babyy ❤️</title>
+  <style>
+    :root{
+      --blue:#a9c9e8;
+      --blue-deep:#6f9fc8;
+      --pink:#efb8c8;
+      --pink-deep:#d887a3;
+      --mauve:#8f7187;
+      --navy:#40536c;
+      --cream:#fffdfb;
+      --white:#ffffff;
+      --lav:#d9cdea;
+      --shadow:0 18px 50px rgba(73,91,119,.15);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-rounded, "SF Pro Rounded", "Nunito", "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--navy);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(239,184,200,.35), transparent 25%),
+        radial-gradient(circle at 90% 20%, rgba(169,201,232,.38), transparent 28%),
+        linear-gradient(180deg,#fbfdff,#fff9fb 45%,#f7fbff);
+      overflow-x:hidden;
+    }
+
+    button{font:inherit}
+    .screen{
+      min-height:100svh;
+      padding:72px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .container{width:min(1100px,100%);margin:auto}
+    .center{text-align:center}
+    .hidden{display:none!important}
+    .soft-card{
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(255,255,255,.95);
+      backdrop-filter:blur(12px);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+    }
+
+    .script{
+      font-family:"Snell Roundhand","Segoe Script","Brush Script MT",cursive;
+      font-weight:600;
+      letter-spacing:.2px;
+    }
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:12px;
+      font-weight:800;
+      color:var(--pink-deep);
+      margin-bottom:12px;
+    }
+
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(48px,8vw,92px);line-height:.98;margin-bottom:18px}
+    h2{font-size:clamp(34px,5vw,58px);line-height:1.08;margin-bottom:18px}
+    p{line-height:1.75}
+
+    .btn{
+      border:0;
+      border-radius:999px;
+      padding:14px 24px;
+      min-height:48px;
+      cursor:pointer;
+      font-weight:800;
+      box-shadow:0 10px 26px rgba(75,95,120,.14);
+      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+      touch-action:manipulation;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg,var(--blue-deep),#7fb3db);color:white}
+    .btn-pink{background:linear-gradient(135deg,var(--pink-deep),#e9a4ba);color:white}
+    .btn-light{background:white;color:var(--navy);border:1px solid rgba(91,115,143,.14)}
+
+    .floating-note{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:50;
+      width:52px;height:52px;border-radius:50%;
+      display:grid;place-items:center;
+      border:none;background:white;box-shadow:var(--shadow);cursor:pointer;
+      font-size:20px;
+    }
+
+    .sparkle,.heart{
+      position:absolute;
+      opacity:.38;
+      pointer-events:none;
+      animation:float 6s ease-in-out infinite;
+    }
+    .heart{font-size:24px}
+    .sparkle{font-size:18px}
+    @keyframes float{
+      0%,100%{transform:translateY(0) rotate(0deg)}
+      50%{transform:translateY(-8px) rotate(2deg)}
+    }
+
+    /* Opening */
+    #opening{
+      background:linear-gradient(145deg,#f9fcff 0%,#fff7fb 52%,#eef7ff 100%);
+    }
+    .opening-card{
+      width:min(760px,100%);
+      text-align:center;
+      padding:42px 28px;
+    }
+    .bear-scene{
+      width:min(340px,88vw);
+      margin:0 auto 18px;
+      position:relative;
+      height:220px;
+    }
+    .bear{
+      position:absolute;
+      width:132px;height:132px;
+      background:#d7b79a;
+      border-radius:44% 44% 48% 48%;
+      top:42px;
+      box-shadow:0 12px 24px rgba(112,92,79,.12);
+    }
+    .bear:before,.bear:after{
+      content:"";position:absolute;width:40px;height:40px;background:#d7b79a;border-radius:50%;top:-13px
+    }
+    .bear:before{left:8px}.bear:after{right:8px}
+    .bear .eye{position:absolute;width:8px;height:8px;background:#4d3c35;border-radius:50%;top:45px}
+    .bear .eye.l{left:37px}.bear .eye.r{right:37px}
+    .bear .snout{position:absolute;width:46px;height:35px;border-radius:50%;background:#ead4c1;left:43px;top:56px}
+    .bear .nose{position:absolute;width:12px;height:9px;border-radius:50%;background:#4d3c35;left:60px;top:61px}
+    .bear.one{left:40px;transform:rotate(-4deg)}
+    .bear.two{right:40px;background:#cda98d;transform:rotate(4deg)}
+    .bear.two:before,.bear.two:after{background:#cda98d}
+    .cake{
+      position:absolute;left:50%;transform:translateX(-50%);
+      bottom:4px;width:102px;height:58px;border-radius:10px 10px 16px 16px;
+      background:linear-gradient(#fff 0 25%,#efb8c8 25% 100%);
+      box-shadow:0 10px 22px rgba(120,95,110,.15);
+    }
+    .cake:before{
+      content:"";position:absolute;width:6px;height:28px;background:#7aa8d2;left:48px;top:-24px;border-radius:3px
+    }
+    .cake:after{
+      content:"🔥";position:absolute;font-size:14px;left:43px;top:-43px
+    }
+
+    /* Ready pages */
+    .choice-card{
+      width:min(780px,100%);
+      padding:42px 28px 52px;
+      text-align:center;
+      position:relative;
+    }
+    .choices{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+    #runawayStage{
+      min-height:100svh;
+      padding:28px 20px;
+      display:none;
+      position:relative;
+      overflow:hidden;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,#f8fbff,#fff8fb);
+    }
+    #runawayStage.active{display:flex}
+    .runaway-wrap{width:min(850px,100%);padding:36px 24px;text-align:center;position:relative;z-index:2}
+    .runaway-zone{
+      position:relative;
+      height:min(56vh,470px);
+      min-height:320px;
+      margin-top:18px;
+      border-radius:30px;
+      background:linear-gradient(145deg,rgba(169,201,232,.16),rgba(239,184,200,.16));
+      border:1px dashed rgba(111,159,200,.25);
+      overflow:hidden;
+    }
+    #readyNow{
+      position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);
+      z-index:3
+    }
+    #stillNot{
+      position:absolute;left:68%;top:55%;z-index:4;
+      transition:left .14s ease, top .14s ease, transform .14s ease;
+    }
+    #tease{
+      min-height:26px;margin-top:12px;font-weight:800;color:var(--pink-deep)
+    }
+
+    /* Reveal */
+    #main{display:none}
+    #main.active{display:block}
+    .hero{
+      background:
+        radial-gradient(circle at 18% 20%,rgba(239,184,200,.38),transparent 28%),
+        radial-gradient(circle at 82% 20%,rgba(169,201,232,.44),transparent 30%),
+        linear-gradient(180deg,#fbfdff,#fff9fb);
+    }
+    .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+    .hero-copy{padding:20px}
+    .hero-photo{
+      background:white;border-radius:28px;padding:14px;box-shadow:var(--shadow);
+      transform:rotate(1.2deg)
+    }
+    .hero-photo img{width:100%;display:block;border-radius:20px;aspect-ratio:4/5;object-fit:cover}
+
+    .section{padding:90px 20px}
+    .section-title{text-align:center;margin-bottom:40px}
+    .section-title p{max-width:680px;margin:0 auto;color:#65768a}
+
+    .photo-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+    }
+    .polaroid{
+      background:white;padding:10px 10px 18px;border-radius:14px;box-shadow:0 14px 32px rgba(76,91,111,.12);
+      transition:.25s ease;
+    }
+    .polaroid:nth-child(odd){transform:rotate(-1.2deg)}
+    .polaroid:nth-child(even){transform:rotate(1.2deg)}
+    .polaroid:hover{transform:translateY(-6px) rotate(0)}
+    .polaroid img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;display:block}
+    .caption{font-size:14px;font-weight:800;margin:12px 4px 0;text-align:center;color:var(--mauve)}
+
+    .feature{
+      display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;
+    }
+    .feature img{width:100%;border-radius:26px;box-shadow:var(--shadow);aspect-ratio:4/5;object-fit:cover}
+    .feature-copy{padding:12px}
+
+    .question-card{
+      width:min(820px,100%);margin:auto;padding:42px 26px;text-align:center;position:relative;
+    }
+    .love-zone{
+      position:relative;height:420px;margin-top:22px;border-radius:28px;
+      background:linear-gradient(145deg,rgba(169,201,232,.14),rgba(239,184,200,.14));
+      overflow:hidden;
+    }
+    #yesLove{
+      position:absolute;left:40%;top:52%;transform:translate(-50%,-50%);z-index:2
+    }
+    #noLove{
+      position:absolute;left:60%;top:52%;z-index:3;
+      transition:left .09s ease, top .09s ease, transform .09s ease;
+    }
+    #loveTease{min-height:26px;margin-top:12px;font-weight:800;color:var(--pink-deep)}
+
+    .love-cards{
+      display:grid;grid-template-columns:repeat(5,1fr);gap:16px;
+    }
+    .love-card{
+      background:white;border-radius:22px;padding:22px 18px;box-shadow:0 12px 30px rgba(75,95,120,.1);
+      min-height:180px;cursor:pointer;transition:.25s ease;
+    }
+    .love-card:hover{transform:translateY(-5px)}
+    .love-card .back{display:none;color:#68788a;font-size:14px}
+    .love-card.open .front{display:none}
+    .love-card.open .back{display:block}
+
+    .letter{
+      width:min(860px,100%);margin:auto;padding:44px 32px;background:#fffefa;border-radius:28px;
+      box-shadow:var(--shadow);border:1px solid rgba(234,207,217,.5)
+    }
+    .letter p{font-size:16px;color:#5f6f82}
+    .letter .em{font-weight:900;color:var(--mauve)}
+
+    .final{
+      background:linear-gradient(145deg,#dbeaf8,#f7d9e3 60%,#fff);
+      text-align:center
+    }
+
+    .celebration{
+      position:fixed;bottom:-30px;pointer-events:none;z-index:100;font-size:22px;
+      animation:rise 4s linear forwards
+    }
+    @keyframes rise{
+      to{transform:translateY(-115vh) rotate(220deg);opacity:0}
+    }
+
+    @media (max-width:900px){
+      .hero-inner,.feature{grid-template-columns:1fr}
+      .photo-grid{grid-template-columns:repeat(2,1fr)}
+      .love-cards{grid-template-columns:repeat(2,1fr)}
+      .hero-photo{max-width:520px;margin:auto}
+    }
+
+    @media (max-width:600px){
+      .screen{padding:48px 16px}
+      .section{padding:68px 16px}
+      .opening-card,.choice-card,.runaway-wrap,.question-card{padding:30px 18px}
+      .photo-grid{grid-template-columns:1fr 1fr;gap:14px}
+      .caption{font-size:12px}
+      .love-cards{grid-template-columns:1fr}
+      .love-zone{height:360px}
+      #yesLove{left:34%}
+      #noLove{left:58%}
+      .runaway-zone{height:380px}
+      .bear-scene{height:200px}
+      .bear{transform:scale(.9)}
+      .bear.one{left:22px}.bear.two{right:22px}
+      .letter{padding:30px 20px}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music/song.mp3" type="audio/mpeg">
+  </audio>
+  <button class="floating-note hidden" id="musicBtn" aria-label="Play or pause music">🎵</button>
+
+  <section class="screen" id="opening">
+    <span class="heart" style="left:8%;top:15%">♡</span>
+    <span class="heart" style="right:9%;bottom:18%;animation-delay:1.5s">♡</span>
+    <span class="sparkle" style="left:20%;bottom:20%">✦</span>
+    <span class="sparkle" style="right:20%;top:18%;animation-delay:2s">✧</span>
+
+    <div class="opening-card soft-card">
+      <div class="bear-scene" aria-hidden="true">
+        <div class="bear one">
+          <span class="eye l"></span><span class="eye r"></span><span class="snout"></span><span class="nose"></span>
+        </div>
+        <div class="bear two">
+          <span class="eye l"></span><span class="eye r"></span><span class="snout"></span><span class="nose"></span>
+        </div>
+        <div class="cake"></div>
+      </div>
+      <div class="eyebrow">A tiny little world made just for you</div>
+      <h1 class="script">Hey you… ❤️</h1>
+      <p>I made something just for you, my Babyy.</p>
+      <button class="btn btn-pink" id="openBtn">OPEN YOUR SURPRISE 🎁</button>
+    </div>
+  </section>
+
+  <section class="screen hidden" id="readyScreen">
+    <div class="choice-card soft-card">
+      <div class="eyebrow">But before we continue…</div>
+      <h2>Are you ready for your little surprise? 👀</h2>
+      <div class="choices">
+        <button class="btn btn-primary" id="readyYes">I’M READY ❤️</button>
+        <button class="btn btn-light" id="notYet">NOT YET 😏</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="runawayStage">
+    <div class="runaway-wrap soft-card">
+      <div class="eyebrow">Okay then…</div>
+      <h2>Hmm… really? 👀</h2>
+      <p>One more chance, birthday boy 😌</p>
+      <div class="runaway-zone" id="runawayZone">
+        <button class="btn btn-primary" id="readyNow">I’M READY NOW ❤️</button>
+        <button class="btn btn-light" id="stillNot">STILL NOT YET 😏</button>
+      </div>
+      <div id="tease" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section class="screen hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Today is all about you</div>
+          <h1 class="script">Happy Birthday, My Babyy ❤️</h1>
+          <p>Another year of you, another year of me being grateful that you exist.</p>
+          <p><strong>A tiny little world made just for you, with all my love.</strong></p>
+        </div>
+        <div class="hero-photo">
+          <img src="images/hero-photo.svg" alt="Replace with your favourite couple photo">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <div class="eyebrow">Our little collection of us</div>
+          <h2 class="script">Tiny Moments, Big Memories ❤️</h2>
+          <p>Replace these with your own couple photos. Keep the little captions or change them to your own memories.</p>
+        </div>
+
+        <div class="photo-grid">
+          <div class="polaroid"><img src="images/photo1.svg" alt=""><div class="caption">My favourite view ❤️</div></div>
+          <div class="polaroid"><img src="images/photo2.svg" alt=""><div class="caption">Us being us 😂</div></div>
+          <div class="polaroid"><img src="images/photo3.svg" alt=""><div class="caption">This day &gt;&gt;&gt;</div></div>
+          <div class="polaroid"><img src="images/photo4.svg" alt=""><div class="caption">One of my comfort memories</div></div>
+          <div class="polaroid"><img src="images/photo5.svg" alt=""><div class="caption">A little piece of us</div></div>
+          <div class="polaroid"><img src="images/photo6.svg" alt=""><div class="caption">This smile ❤️</div></div>
+          <div class="polaroid"><img src="images/photo7.svg" alt=""><div class="caption">My favourite human</div></div>
+          <div class="polaroid"><img src="images/photo8.svg" alt=""><div class="caption">More of this, please.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:rgba(255,255,255,.42)">
+      <div class="container feature">
+        <img src="images/feature-photo.svg" alt="Replace with a special memory photo">
+        <div class="feature-copy">
+          <div class="eyebrow">A favourite memory</div>
+          <h2 class="script">Some moments become memories without us even realizing it.</h2>
+          <p>And somehow, the ones with you always become my favourites. ❤️</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="question-card soft-card">
+        <div class="eyebrow">Okay… serious question 👀</div>
+        <h2>Do you love me? ❤️</h2>
+        <p>Choose carefully, mister.</p>
+
+        <div class="love-zone" id="loveZone">
+          <button class="btn btn-pink" id="yesLove">YES ❤️</button>
+          <button class="btn btn-light" id="noLove">NO 😏</button>
+        </div>
+        <div id="loveTease" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" style="background:rgba(233,243,252,.42)">
+      <div class="container">
+        <div class="section-title">
+          <div class="eyebrow">A few little reminders</div>
+          <h2 class="script">Things I Love About You</h2>
+          <p>Tap a card.</p>
+        </div>
+
+        <div class="love-cards">
+          <div class="love-card" tabindex="0"><div class="front"><h3>Your Smile</h3><p>Tap me ❤️</p></div><div class="back">It somehow makes everything feel better.</div></div>
+          <div class="love-card" tabindex="0"><div class="front"><h3>Your Heart</h3><p>Tap me ❤️</p></div><div class="back">You care more deeply than you probably realise.</div></div>
+          <div class="love-card" tabindex="0"><div class="front"><h3>Your Kindness</h3><p>Tap me ❤️</p></div><div class="back">The way you respect people and help others never goes unnoticed.</div></div>
+          <div class="love-card" tabindex="0"><div class="front"><h3>Your Sensitive Side</h3><p>Tap me ❤️</p></div><div class="back">Sometimes I don’t know how to handle all those emotions 😂, but that soft heart is also part of what makes you you.</div></div>
+          <div class="love-card" tabindex="0"><div class="front"><h3>Simply You</h3><p>Tap me ❤️</p></div><div class="back">No explanation needed. ❤️</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container center">
+        <div class="eyebrow">If I could give you one thing…</div>
+        <h2 class="script">I’d let you see yourself through my eyes, just for a moment.</h2>
+        <p>So you could understand how special you are to me. ❤️</p>
+      </div>
+    </section>
+
+    <section class="section" style="background:rgba(255,255,255,.45)">
+      <div class="letter">
+        <div class="eyebrow">A not-so-little birthday note for you ❤️</div>
+        <h2 class="script">My love,</h2>
+
+        <p>You are one of the best gifts life has ever given me, and if I could ask for one thing, it would be a long, beautiful life with you by my side.</p>
+
+        <p>Sometimes you may think that you are not perfect. You may notice your own flaws, overthink things, or feel like you are not enough. But I want you to always remember this:</p>
+
+        <p class="em">You are perfect for me in your own way.</p>
+
+        <p>Not because you never make mistakes, but because of the kind of person you are. You have such a sensitive heart. You care deeply, you love me genuinely, you think about the little things, you respect people, and you are always willing to help others. You are thoughtful, kind, caring, and genuinely such a good man.</p>
+
+        <p>And I will always be thankful and grateful to Amma and Thaththa for raising someone like you with such a beautiful heart. ❤️</p>
+
+        <p>Yes, sometimes your sensitivity can be difficult for me too. There are moments when I honestly don’t know how to handle all your emotions, and I may not always understand you in the right way. Sometimes I even wonder how I am supposed to deal with this very sensitive boy. 😌😂</p>
+
+        <p>But even then, I still want to understand you. I still want to be patient with you. I still want to stay beside you.</p>
+
+        <p>Because loving you does not mean loving only the easy parts of you.</p>
+
+        <p>No matter how the days change, no matter what life brings us, and no matter how difficult some moments may become, I want you to keep one thing in your heart:</p>
+
+        <p class="em">I still choose you.</p>
+
+        <p>I choose you on the easy days.<br>
+        I choose you on the difficult days.<br>
+        I choose you when everything feels perfect, and I choose you when things feel confusing.</p>
+
+        <p>Whatever happens between us, I hope we can sit together, talk, understand each other, fix what we can, learn from what we cannot, and keep choosing each other through all the little moments in between.</p>
+
+        <p>I want to be there for you — in your happiest moments, your difficult days, your quiet moods, your sensitive moments, your dreams, your failures, your wins, and everything that comes with them.</p>
+
+        <p>And I hope you will be there for me too.</p>
+
+        <p>I hope we get to celebrate many more birthdays together, create countless memories, take far too many photos, laugh at random things, annoy each other, argue over silly things, forgive each other, grow together, and one day look back at everything we went through and smile because we stayed.</p>
+
+        <p>I want a long life with you — a life filled with little moments, big dreams, warm hugs, silly fights, random laughter, quiet days, adventures, too many photos, unforgettable memories, and a love that keeps choosing each other over and over again.</p>
+
+        <p class="em">No matter how imperfect you may think you are, you are still perfect for me.<br>
+        No matter how difficult life becomes, I will always try to stand beside you.<br>
+        No matter what happens, my heart still chooses you.<br>
+        I’m still here.<br>
+        And I still love you. ❤️</p>
+      </div>
+    </section>
+
+    <section class="screen final">
+      <div class="container center">
+        <div class="eyebrow">One last thing…</div>
+        <h1 class="script">Happy Birthday, My Babyy ❤️</h1>
+        <p>A tiny little world made just for you, with all my love.</p>
+        <p><strong>Love you endlessly, my Babyy.<br>Stay blessed, stay happy, and always keep smiling. ❤️</strong></p>
+        <div style="font-size:70px;margin-top:24px">🧸💗🧸</div>
+      </div>
+    </section>
+  </main>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+
+  const opening = $("opening");
+  const readyScreen = $("readyScreen");
+  const runawayStage = $("runawayStage");
+  const main = $("main");
+  const music = $("bgMusic");
+  const musicBtn = $("musicBtn");
+
+  let musicWanted = true;
+
+  function showReady(){
+    opening.classList.add("hidden");
+    readyScreen.classList.remove("hidden");
+    musicBtn.classList.remove("hidden");
+    if (musicWanted) {
+      music.volume = 0.52;
+      music.play().catch(()=>{});
+    }
+  }
+
+  function showMain(){
+    readyScreen.classList.add("hidden");
+    runawayStage.classList.remove("active");
+    main.classList.add("active");
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  $("openBtn").addEventListener("click", showReady);
+  $("readyYes").addEventListener("click", showMain);
+
+  $("notYet").addEventListener("click", () => {
+    readyScreen.classList.add("hidden");
+    runawayStage.classList.add("active");
+  });
+
+  $("readyNow").addEventListener("click", showMain);
+
+  musicBtn.addEventListener("click", () => {
+    if (music.paused) {
+      music.volume = 0.52;
+      music.play().catch(()=>{});
+      musicBtn.textContent = "🎵";
+      musicWanted = true;
+    } else {
+      music.pause();
+      musicBtn.textContent = "🔇";
+      musicWanted = false;
+    }
+  });
+
+  function randomFarPosition(zone, btn, oldX, oldY, minDist=140){
+    const pad = 18;
+    const maxX = Math.max(pad, zone.clientWidth - btn.offsetWidth - pad);
+    const maxY = Math.max(pad, zone.clientHeight - btn.offsetHeight - pad);
+    let x = pad, y = pad;
+    for(let i=0;i<30;i++){
+      x = pad + Math.random() * Math.max(0, maxX-pad);
+      y = pad + Math.random() * Math.max(0, maxY-pad);
+      const d = Math.hypot(x-oldX, y-oldY);
+      if(d >= minDist) break;
+    }
+    return {x,y};
+  }
+
+  const stillNot = $("stillNot");
+  const runwayZone = $("runawayZone");
+  const tease = $("tease");
+  const teaseMsgs = [
+    "Nice try 😏",
+    "Too slow, birthday boy 😂",
+    "Almost 👀",
+    "Catch me if you can 😌",
+    "Wrong one, mister 😂",
+    "Still trying? 👀",
+    "Nice try, handsome ❤️"
+  ];
+  let teaseIndex = 0;
+
+  function moveStillNot(){
+    const oldX = parseFloat(stillNot.style.left) || stillNot.offsetLeft;
+    const oldY = parseFloat(stillNot.style.top) || stillNot.offsetTop;
+    const {x,y} = randomFarPosition(runwayZone, stillNot, oldX, oldY, runwayZone.clientWidth < 520 ? 90 : 170);
+    stillNot.style.left = x + "px";
+    stillNot.style.top = y + "px";
+    tease.textContent = teaseMsgs[teaseIndex++ % teaseMsgs.length];
+    clearTimeout(moveStillNot._t);
+    moveStillNot._t = setTimeout(()=> tease.textContent="", 1500);
+  }
+
+  stillNot.addEventListener("pointerenter", moveStillNot);
+  stillNot.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    moveStillNot();
+  });
+
+  const noLove = $("noLove");
+  const loveZone = $("loveZone");
+  const loveTease = $("loveTease");
+  const loveMsgs = [
+    "Excuse me? 👀",
+    "Wrong answer 😂",
+    "Nice try 😏",
+    "Why are you chasing NO? 😂",
+    "Try the other button, birthday boy ❤️",
+    "Nope 😌",
+    "Catch me first 😂"
+  ];
+  let loveIndex = 0;
+
+  function moveNo(){
+    const oldX = parseFloat(noLove.style.left) || noLove.offsetLeft;
+    const oldY = parseFloat(noLove.style.top) || noLove.offsetTop;
+    const {x,y} = randomFarPosition(loveZone, noLove, oldX, oldY, loveZone.clientWidth < 520 ? 100 : 190);
+    noLove.style.left = x + "px";
+    noLove.style.top = y + "px";
+    loveTease.textContent = loveMsgs[loveIndex++ % loveMsgs.length];
+    clearTimeout(moveNo._t);
+    moveNo._t = setTimeout(()=> loveTease.textContent="", 1400);
+  }
+
+  noLove.addEventListener("pointerenter", moveNo);
+  noLove.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    moveNo();
+  });
+
+  $("yesLove").addEventListener("click", () => {
+    loveTease.textContent = "I knew it 😌❤️";
+    for(let i=0;i<28;i++){
+      setTimeout(() => {
+        const h = document.createElement("div");
+        h.className = "celebration";
+        h.textContent = ["❤️","💗","💕","✨"][Math.floor(Math.random()*4)];
+        h.style.left = Math.random()*100 + "vw";
+        h.style.fontSize = (18 + Math.random()*18) + "px";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(), 4200);
+      }, i*80);
+    }
+  });
+
+  document.querySelectorAll(".love-card").forEach(card => {
+    const toggle = () => card.classList.toggle("open");
+    card.addEventListener("click", toggle);
+    card.addEventListener("keydown", (e)=> {
+      if(e.key==="Enter" || e.key===" "){e.preventDefault();toggle();}
+    });
+  });
+})();
+</script>
+</body>
+</html>
